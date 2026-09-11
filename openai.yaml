@@ -1,0 +1,8 @@
+interface:
+  display_name: "TEMUshangjia"
+  short_description: "Build and publish TEMU semi-managed listings from spreadsheets"
+  default_prompt: "Use $temu-shangjia to prepare, validate, publish, and verify a TEMU semi-managed product listing from my spreadsheet."
+
+policy:
+  allow_implicit_invocation: true
+

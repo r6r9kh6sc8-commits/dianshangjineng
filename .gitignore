@@ -1,0 +1,9 @@
+.env
+.env.*
+*.secret
+credentials*.json
+request*.log
+response*.json
+__pycache__/
+*.pyc
+
