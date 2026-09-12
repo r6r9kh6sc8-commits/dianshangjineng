@@ -1,120 +1,80 @@
-# TEMUzuotu 图片角色与提示词模板
+# Ecommerce Image Prompt Templates
 
-生成套图前阅读此文件。先填充已确认事实，再将共享约束与对应角色合并为一条独立提示词，每张图片单独调用内置图片生成。以下花括号是任务填写字段；缺少事实时省略相关卖点，不输出花括号或编造内容。
+Replace bracketed fields only with facts supported by the user's reference.
 
-## 共享约束模板
-
+## Shared prompt block
 ```text
-Use case: product-mockup / ads-marketing as appropriate.
-Asset: ONE US-market children's toy ecommerce image.
-Reference inputs: {identify each product reference explicitly}.
-Product facts: {confirmed product, actual colors, shapes, translucency,
-construction system, included parts and accessories}.
-Inventory: {category-by-category quantities, confirmed total}.
-Dimensions: {verified product measurements and measured object, if relevant}.
-Format: exactly 1:1 square; prefer 2000 x 2000 px if supported.
-Scene: one continuous {original setting}, with consistent perspective and lighting.
-Composition: product visually dominant, about 70% of frame, complete and unobstructed.
-Visual direction: {shared palette, lighting, photography style and typography}.
-Preserve the reference product's real shapes, materials, proportions and connections.
-Use only confirmed parts; keep all depicted quantities within the actual inventory.
-No collage, split screen, grid, inset, card panels, extra accessories,
-copied packaging, logos, watermarks, unsupported claims or internally glowing plastic.
-Copy: short English text specified below; do not invent extra text.
+Use the attached image only as a product reference. Preserve the real [PRODUCT], including exact shapes, colors, materials, proportions, connection system, included accessories and quantities.
+
+Create an EXACT 1:1 square US Amazon/TEMU ecommerce image. The product occupies approximately 70% of the frame. Use one continuous scene only.
+
+Do not copy the reference background, logo, brand or packaging. No collage, split screen, grid, inset panel, watermark, invented accessory, unsupported claim or incorrect quantity. Use short English copy only. Show dimensions in both centimeters and inches.
 ```
 
-不要把同一套人物或动作作为风格统一条件。共享的是色彩、光线、文字排版风格和真实产品，不是人物身份。
-
-## 01 — Hero
-
+## 1. Hero image
 ```text
-Create a photorealistic hero image of {confirmed toy/build} in {original setting}.
-Exactly one white adult {appearance/clothing} and one white child
-{distinct appearance/clothing}, interacting naturally: {supported play action}.
-People are secondary behind or beside the toy, with hands clear of key structures.
-Keep believable scale. Show the entire toy with breathing room on every edge.
-Only confirmed accessories, at most {confirmed quantities}.
-Text, verbatim: "{short supported headline}".
-Optional subline: "{confirmed product description or total}".
+Use case: product-mockup
+Asset type: square ecommerce hero image
+Scene: an original bright family playroom appropriate to [PRODUCT].
+Subject: one Caucasian adult parent and one Caucasian child actively using [PRODUCT] together. Give them natural expressions, believable hands, and realistic scale. The product is complete, dominant and unobstructed.
+Composition: exact 1:1 square; product about 70% of frame; people secondary.
+Text (verbatim): "[PIECE COUNT] PCS"
+[SHARED PROMPT BLOCK]
 ```
 
-选择参考已展示的玩法，例如搭建或滚珠，不添加参考未支持的电子、遥控等功能。
-
-## 02 — Lifestyle
-
+## 2. Parent-child lifestyle image
 ```text
-Create a second photorealistic parent-child scene with {confirmed toy}.
-Exactly one white adult {identity visibly different from 01} and one white child
-{identity visibly different from 01}, in {different original setting}.
-Action: {different supported interaction}.
-Use different faces, age appearance, hair, clothing, poses and actions from image 01.
-Keep toy dominant and unobstructed, natural hands and believable scale.
-Use only the real included parts and accessories.
-Text, verbatim: "{short supported lifestyle headline}".
+Use case: photorealistic-natural
+Asset type: square family lifestyle ecommerce image
+Scene: a different original family activity setting.
+Subject: a different Caucasian adult and Caucasian child collaboratively using [PRODUCT]. Change faces, ages, hairstyles, clothing, body positions and actions from the hero image.
+Composition: exact 1:1 square; product about 70%; product clearly visible.
+Text (verbatim): "CREATE TOGETHER"
+[SHARED PROMPT BLOCK]
 ```
 
-记录 01 的人物设计再选择 02，避免只换背景而复制同一组人物。
-
-## 03 — Multiple Builds
-
+## 3. Multiple-build image
 ```text
-Product-only photograph: three distinct physically plausible builds of {toy}
-naturally positioned on ONE continuous {surface}, same camera and shadows.
-Build A: {structure and part allocation}.
-Build B: {structure and part allocation}.
-Build C: {structure and part allocation}.
-The three combined use no more than {inventory per category}; do not duplicate kits.
-Use only reference-confirmed parts and connection methods, with structural support.
-No people, hands, collage, grid, dividers, inset windows or separate scene panels.
-All three builds fully visible and together occupy about 70% of frame.
-Text, verbatim: "{short headline}".
+Use case: ads-marketing
+Asset type: square multiple-build ecommerce image
+Subject: NO PEOPLE. Show three physically coherent builds made only from the referenced parts, arranged in one continuous tabletop scene. Use different forms appropriate to the product and a small number of real loose pieces.
+Text (verbatim): "BUILD IT YOUR WAY" and "MULTIPLE BUILD IDEAS"
+[SHARED PROMPT BLOCK]
 ```
 
-先核算三种搭建各类零件用量。产品不支持重组或只有一种固定形态时，不虚构三种形态；说明限制并向用户确认替代角色，继续其他独立图片。
-
-## 04 — What's Included
-
+## 4. Contents image
 ```text
-Product-only contents photograph on one continuous {neutral surface}.
-Arrange ALL actual included parts in naturally staggered, clearly separated groups,
-without a grid or cards. Use shallow fans or separated pieces so counts are inspectable.
-Exact groups and labels: {English category names × exact quantities}.
-Headline: "What's Included".
-Total: "{confirmed N} Pieces".
-Render exactly the labeled number of real objects in each group.
-No extra assembled model that duplicates the displayed inventory.
-No people, hands, packaging, props or unconfirmed accessories.
-Preserve exact opening shapes, connector details, colors and translucency.
+Use case: infographic-diagram
+Asset type: square exact-contents ecommerce image
+Subject: NO PEOPLE. Arrange every included part into clearly separated groups. Label each group with its exact name and quantity. The displayed quantities must total exactly [PIECE COUNT].
+Text (verbatim): "WHAT'S INCLUDED", "[PIECE COUNT] PCS", and the verified part labels.
+[SHARED PROMPT BLOCK]
 ```
 
-逐项看图计数；不能用标签代替视觉核验。白色实体嵌片与空心孔位不可混淆。无法看清或稳定还原时保留为草稿，说明缺陷。
-
-## 05 — Dimensions
-
+## 5. Dimensions image
 ```text
-Product-only dimension image on one continuous {neutral studio surface}.
-Show {exact measured product/part} matching the reference.
-Measurement arrows point precisely to {verified measured edges}.
-Exact labels: "{cm value} cm ({converted in value} in)" for each confirmed measurement.
-Headline: "{short dimension headline}".
-Preserve the real shape and proportions; no inferred dimensions.
-No people, hands, packaging, shipping measurements, collage or inset panel.
+Use case: infographic-diagram
+Asset type: square product-dimensions ecommerce image
+Subject: NO PEOPLE. Show the relevant product or component clearly with one clean dimension arrow. Do not include package or carton dimensions unless explicitly requested.
+Text (verbatim): "[SIZE HEADING]" and "[CM VALUE] cm ([IN VALUE] in)"
+[SHARED PROMPT BLOCK]
 ```
 
-先计算单位换算再提交提示词。若只有包装尺寸，不能生成产品尺寸图或悄悄改为包装图；向用户索取产品实测数据。尺寸待补不阻止其他有充分资料的图片。
-
-## 06 — Features
-
+## 6. Feature image
 ```text
-One continuous product-only close-up of {genuine feature/connection/mechanism}.
-Show {reference-confirmed assembly} with visible {real detail}.
-Use normal reflections and translucency; no internal light source.
-Keep accurate joints, openings and proportions. No invented screws, magnets,
-cutaway internals, accessories, arrows implying unsupported action, or mechanisms.
-No people, hands, collage or inset zoom windows.
-Text, verbatim: "{short factual feature headline}".
-Optional subline: "{reference-supported material appearance or mechanism}".
+Use case: product-mockup
+Asset type: square product-feature ecommerce image
+Subject: NO PEOPLE. Show a close, accurate view of genuine product materials, connections or mechanisms, with a completed product example behind it. Highlight only features supported by the reference.
+Text (verbatim): "[SHORT FEATURE HEADLINE]"
+[SHARED PROMPT BLOCK]
 ```
 
-只选择有图像依据的特征，例如半透明片、磁力边缘或轨道连接；不得从玩具类别推断认证、教育成效或安全保证。
-
+## Filename convention
+```text
+01_hero.png
+02_parent_child_lifestyle.png
+03_multiple_builds.png
+04_whats_included.png
+05_dimensions.png
+06_product_features.png
+```
